@@ -20,6 +20,11 @@ function getBooksBorrowedCount(books) {
   }, 0)
 }
 
+function sortAndSliceFirstFiveElements(temp) {
+  temp.sort((a, b) => b.count - a.count);
+  return temp.slice(0, 5);
+}
+
 function getMostCommonGenres(books) {
   let temp = []
   let found = books.map((book) => book.genre);
@@ -31,8 +36,7 @@ function getMostCommonGenres(books) {
       temp.push({name: genre, count: 1});
     }
   })
-  temp.sort((a, b) => b.count - a.count);
-  return temp.slice(0, 5);
+  return sortAndSliceFirstFiveElements(temp);
 }
 
 function getMostPopularBooks(books) {
